@@ -98,3 +98,7 @@ print(expected[:20])
 # Want to know where it did not predict correctly:
 wrong = [(p,e) for (p,e) in zip(predicted, expected) if p != e]
 print(wrong)
+# we gave it almost 1400 data values, and it only got around 10 wrong
+# if we gave it 10,000+, it should reduce to almost no wrong ones
+
+
