@@ -101,4 +101,18 @@ print(wrong)
 # we gave it almost 1400 data values, and it only got around 10 wrong
 # if we gave it 10,000+, it should reduce to almost no wrong ones
 
+print(format(knn.score(x_test, y_test), ".2%")) # formats with 2 decimal places
+# sows that it got a 97.78% accuracy
+# so it got the ones in our lsit comprehension wrong, and that's the ~3%
 
+
+# NEXT: Confusion matrix
+# shows correct and incorrect predicted values
+# essentially the hit/misses 
+
+# our model has 10 classes (0-9)
+# confusion matrix will show us how many it got correct and incorect for each classes, based on the data we fitted
+from sklearn.metrics import confusion_matrix
+
+confusion = confusion_matrix(y_true=expected, y_pred = predicted)
+print(confusion)
