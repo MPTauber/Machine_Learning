@@ -9,7 +9,7 @@ digits = load_digits()
 #print(digits.DESCR)
 
 # a sample is one row
-'''
+
 print(digits.data[:2]) # each sample has 64 features (attributes)
 # there are 1797 samples
 # numbers represent the pixel intensity for each row and column of an image
@@ -29,17 +29,17 @@ print(digits.target[100:120]) # target values of samples
 ## ---_> this is SUpervised Machine Learning (labeled data)
 
 print(digits.target.shape) # there is only one target, thats why the shape is like that
-'''
+
 #####
-'''
+
 print(digits.images[13]) # two dimensional array (8x8)
 # shows us the pixel intensity of each pixel in the image
 # original image is of a blurry 3, that is 8x8 pixels
 
 print(digits.data[13]) # one dimensional (kind of like flattened)
-'''
+
 ####################
-''''
+
 import matplotlib.pyplot as plt
 figure, axes = plt.subplots(nrows=4, ncols=6, figsize=(6,4)) # creates a figure objects, and "axes" represents each boxes
 
@@ -56,7 +56,7 @@ for item in zip(axes.ravel(),digits.images, digits.target): # zip allows to bund
 plt.tight_layout()
 
 plt.show() # shows the images with targets on top
-'''
+
 
 ################### 
 # NEXT: Split data for training and testing purpose
