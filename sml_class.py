@@ -116,3 +116,11 @@ from sklearn.metrics import confusion_matrix
 
 confusion = confusion_matrix(y_true=expected, y_pred = predicted)
 print(confusion)
+# numpy array with all hits and misses for each class within the sample
+# How to interpret:
+# The diagonal line shows the correct ones, causse the classes are 0-9
+#First row: 45 hits on 0 (which is the correct one), etc.
+# Fourth row had some trouble - it's number 3
+# Guessed 5 and 7 incorrectly
+# # 8 seems to be the hardest, cause there are the most errors in th 9th row
+#  
