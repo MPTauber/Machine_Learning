@@ -123,4 +123,18 @@ print(confusion)
 # Fourth row had some trouble - it's number 3
 # Guessed 5 and 7 incorrectly
 # # 8 seems to be the hardest, cause there are the most errors in th 9th row
-#  
+
+###################################################
+# Now make it look prettier:
+# (To actually visualize it with pandas, etc.) 
+# Heatmap! 
+import pandas as pd # pip install pandas
+import seaborn as sns # pipk install seaborn
+import matplotlib.pyplot as plt2
+
+confusion_df = pd.DataFrame(confusion, index=range(10), columns=range(10))
+
+figure = plt2.figure(figsize=(7,6))
+axes = sns.heatmap(confusion_df, annot=True, cmap= plt2.cm.nipy_spectral_r) 
+plt2.show()
+print("done")
