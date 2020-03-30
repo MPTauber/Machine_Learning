@@ -39,6 +39,7 @@ print(digits.images[13]) # two dimensional array (8x8)
 print(digits.data[13]) # one dimensional (kind of like flattened)
 '''
 ####################
+''''
 import matplotlib.pyplot as plt
 figure, axes = plt.subplots(nrows=4, ncols=6, figsize=(6,4)) # creates a figure objects, and "axes" represents each boxes
 
@@ -55,3 +56,45 @@ for item in zip(axes.ravel(),digits.images, digits.target): # zip allows to bund
 plt.tight_layout()
 
 plt.show() # shows the images with targets on top
+'''
+
+################### 
+# NEXT: Split data for training and testing purpose
+# into training set and testing set
+from sklearn.model_selection import train_test_split
+
+# this randomly selects and splits the sample into 4 subsets.
+# 2 subsets to train and a 2 subsets to test:
+x_train, x_test, y_train, y_test = train_test_split(
+    digits.data, digits.target, random_state=11 #random_staet for reproducibility
+)
+print(x_train.shape)
+print(x_test.shape)
+
+# estimator model to implement the k-nearest algorithm
+# algorithm that is used for machine learning (dont need to know what's "under the hood")
+from sklearn.neighbors import KNeighborsClassifier
+
+knn = KNeighborsClassifier()
+# loads training data into the model using the fit method
+# Note: the KNeighborsClassifier fit method does not do calculations
+# it only loads the model
+knn.fit(X=x_train, y=y_train) # only use the train subsets of original data (75% of the original is used to train it)
+# often training takes minutes, hours, days, etc.
+# more processing power = faster
+# more data = longer time for testing
+
+# one way to check if it's doing what we're expecting it to is the predict-method
+
+#Returns an array containing the predicted class of each test image
+# creates an array of digits
+predicted = knn.predict(X=x_test) # train and test should line up pretty well
+expected = y_test
+
+print(predicted[:20])
+print(expected[:20])
+## they are the same, so it trained correctly
+
+# Want to know where it did not predict correctly:
+wrong = [(p,e) for (p,e) in zip(predicted, expected) if p != e]
+print(wrong)
