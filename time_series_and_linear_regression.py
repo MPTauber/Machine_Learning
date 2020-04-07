@@ -50,5 +50,15 @@ linear_regression.fit(X=X_train, y=y_train)
 # Intercept is the estimator's intercept attribute (b in the euqation)
 # y = mx + b
 
-print(linear_regression.coeff_)
+print(linear_regression.coef_)
 print(linear_regression.intercept_)
+
+# Test the model using the data in X_test and check some of the preditions
+predicted = linear_regression.predict(X_test)
+
+expected = y_test
+
+for p, e in zip(predicted[::5], expected[::5]): # check every 5th element
+    print(f"predicted: {p:.2f}, expected: {e:.2f}")
+
+### PREDICTING FUTURE TEMPERATURES AND ESTIMATING PAST TEMPERATURES
