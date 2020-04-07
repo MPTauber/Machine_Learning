@@ -62,3 +62,29 @@ for p, e in zip(predicted[::5], expected[::5]): # check every 5th element
     print(f"predicted: {p:.2f}, expected: {e:.2f}")
 
 ### PREDICTING FUTURE TEMPERATURES AND ESTIMATING PAST TEMPERATURES
+# Use the coefficient and intercept values to make precitions
+
+# lambda implements y = mx + b
+predict = (lambda x: linear_regression.coef_ * x + linear_regression.intercept_)
+
+print(predict(2019))
+print(predict(1890))
+
+### VISUALIZING THE DATASET WITH THE REGRESSION LINE
+###
+# Create a scatterplot with a regression line
+# Cooler temperatures shown in darker colors
+
+import seaborn as sns
+
+axes = sns.scatterplot(
+    data = nyc,
+    x = "Date",
+    y = "Temperature",
+    hue = "Temperature",
+    palette = "winter",
+    legend = False,
+)
+
+axes.set_ylim(10,20)
+
