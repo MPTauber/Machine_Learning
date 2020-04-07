@@ -1,11 +1,13 @@
 import pandas as pd 
 
 ### LOADING THE AVERAGE HIGH TEMPERATURES INTO A DATAFRAME
+###
 nyc = pd.read_csv("ave_hi_nyc_jan_1895-2018.csv")
 
 print(nyc.head(3))
 
 ### SPLITTING THE DATA FOR TRAINING AND TESTING
+###
 # By default this estimator uses all the numeric features in a dataset,
 # performing a multiple linear regression.
 # We want to perform a simple linear regression using just one feature (column/attribute)
@@ -30,3 +32,23 @@ X_train, X_test, y_train, y_test = train_test_split(
 
 print(X_train.shape)
 print(X_test.shape)
+
+### TRAINING THE MODEL
+###
+# To find the best fitting regression line for the data, the LinearRegression
+# estimator iteratibely adjusts the slope and intercept to minimize the sum of
+# the squares of the data points' distances from the line.
+from sklearn.linear_model import LinearRegression
+
+linear_regression = LinearRegression()
+
+# the fit method expects the samples and the targets for training
+linear_regression.fit(X=X_train, y=y_train)
+
+# Using the model for slope and intercept we can make predictions
+# Slope is the estimator's coeff_attribute (m in the equation)
+# Intercept is the estimator's intercept attribute (b in the euqation)
+# y = mx + b
+
+print(linear_regression.coeff_)
+print(linear_regression.intercept_)
