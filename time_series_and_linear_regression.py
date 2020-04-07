@@ -13,9 +13,20 @@ print(nyc.head(3))
 
 # A column in DataFrame is a one-dimensional Series
 # Scikit-learn estimators require training and testing dat to be two-dimensional
+from sklearn.model_selection import train_test_split
 # Transform Series of n elements into two dimensions containing n rows and one column.
 
 print(nyc.Date.values) #returns NumPy array containing Date column's values
 
 # reshape (-1,1) tells reshape to infer the number of rows, based on the number
 # of columns (1) and the number of elements (124) in the array
+print(nyc.Date.values.reshape(-1,1))
+
+# Transofrmed array will have 124 rows and one column
+# 75% for training
+# 25% for testing
+X_train, X_test, y_train, y_test = train_test_split(
+    nyc.Date.values.reshape(-1,1), nyc.Temperature.values, random_state = 11)
+
+print(X_train.shape)
+print(X_test.shape)
