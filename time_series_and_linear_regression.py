@@ -86,5 +86,25 @@ axes = sns.scatterplot(
     legend = False,
 )
 
-axes.set_ylim(10,20)
+axes.set_ylim(10,70)
 
+### CREATING THE REGRESSION LINE
+###
+# Create an array containing the min and max date values in nyc.Date. 
+# These are the x-coordinates of the regression line's start and end points.
+# Using those years we can get the y-coordinates for predicted temperature (using the lambda function)
+import numpy as np 
+
+x = np.array([min(nyc.Date.values), max(nyc.Date.values)])
+print(x)
+
+y = predict(x)
+print(y)
+
+### VISUALIZING THE DATASET WITH THE REGRESSION
+###
+import matplotlib.pyplot as plt
+
+line = plt.plot(x,y)
+
+plt.show()
