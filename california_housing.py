@@ -81,5 +81,39 @@ for i, name in enumerate(california.feature_names):
 predicted = linear_regression.predict(x_test)
 print(predicted[:5]) # view the first 5 predictions
 
-expected = y_testprint(expected[:5]) # view the first 5 expected target values
+expected = y_test
+print(expected[:5]) # view the first 5 expected target values
 
+#### VISUALIZING THE EXPECTED VS PREDICTED PRICES
+
+#create a df containing columns for the expected and predicted values:
+
+df = pd.DataFrame()
+df["Expected"] = pd.Series(expected)
+
+df["Predicted"] = pd.Series(predicted)
+
+# plot the data as a scatter plot with the expected (target)
+# prices along the x-axis and the predicted prices along the y-axis:
+
+import matplotlib.pyplot as plt2
+
+figure = plt2.figure(figsize=(9,9))
+
+axes = sns.scatterplot(data=df, x="Expected", y="Predicted", hue="Predicted", palette ="cool", legend=False)
+
+# set the x and y axes' limits to use the same scale along both axes:
+
+start = min(expected.min(), predicted.min())
+
+end=max(expected.max(), predicted.max())
+
+axes.set_xlim(start,end)
+axes.set_ylim(start,end)
+
+# The following snippet displays a line between the points representing the lower-left corner of the graph (start,end)
+# and the upper-right corner of the graph (end,end). The third argument ("k--") indicates the line's style.
+# The letter k represents the color black, and the -- indicates that plot should draw a dashed line:
+
+line= plt2.plot([start,end],[start,end], "k--")
+plt2.show()
