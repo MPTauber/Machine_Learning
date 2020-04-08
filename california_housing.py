@@ -53,3 +53,33 @@ for feature in california.feature_names:
 #plt.show()
 
 #### SPLITTING THE DATA FOR TRAINING AND TESTING
+
+from sklearn.model_selection import train_test_split
+
+x_train, x_test, y_train, y_test = train_test_split(
+    california.data, california.target, random_state=11
+)
+
+print(x_train.shape)
+print(x_test.shape)
+
+print(y_train.shape)
+print(y_test.shape)
+
+
+#### TRAINING THE MODEL
+
+from sklearn.linear_model import LinearRegression
+
+linear_regression =LinearRegression()
+
+linear_regression.fit(X=x_train, y=y_train)
+
+for i, name in enumerate(california.feature_names):
+    print(f"{name:>10}: {linear_regression.coef_[i]}")
+
+predicted = linear_regression.predict(x_test)
+print(predicted[:5]) # view the first 5 predictions
+
+expected = y_testprint(expected[:5]) # view the first 5 expected target values
+
