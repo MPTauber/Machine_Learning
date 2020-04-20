@@ -10,13 +10,18 @@ import seaborn as sns
 import pandas as pd 
 
 california = fetch_california_housing() # bunch objects
+
+
 california_df = pd.DataFrame(california.data, columns=california.feature_names) # california housing data into dataframe
 california_df["MedHouseValue"] = pd.Series(california.target) # add prices to the houses
 
 sns.set(font_scale=1.1)
 sns.set_style("whitegrid")
-
+# This doesn't work, because there are too many house values. If they were grouped, then it might work.
+'''grid = sns.pairplot(data=california_df,vars=california_df.columns[0:6], hue = "MedHouseValue")'''
+# Leaving latitude and longitude out cause we dont have amap to plot it on
 grid = sns.pairplot(data=california_df,vars=california_df.columns[0:8])
 
-#plt.show()
+plt.show()
 
+## Can't make 
