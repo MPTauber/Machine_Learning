@@ -19,8 +19,8 @@ sns.set(font_scale=1.1)
 sns.set_style("whitegrid")
 # This doesn't work, because there are too many house values. If they were grouped, then it might work.
 '''grid = sns.pairplot(data=california_df,vars=california_df.columns[0:6], hue = "MedHouseValue")'''
-# Leaving latitude and longitude out cause we dont have amap to plot it on
-grid = sns.pairplot(data=california_df,vars=california_df.columns[0:8])
+# Leaving latitude and longitude out cause we dont have a map to plot it on, and the graph would be too big otherwise
+grid = sns.pairplot(data=california_df,vars=california_df.columns[0:6])
 
 plt.show()
 
