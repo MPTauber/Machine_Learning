@@ -19,3 +19,29 @@ x_train, x_test, y_train, y_test = train_test_split(
     random_state=11
 )
 
+## TRAINING THE MODEL
+from sklearn.linear_model import LinearRegression
+
+linear_regression= LinearRegression()
+
+linear_regression.fit(X=x_train, y=y_train)
+
+LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None, normalize=False) # fit returns the estimator
+
+## LinearRegression tries to ifnd the best fitting regression line by iteratively adjusting the slope and intercept values
+# to minimize the sum of the squares of the data points' distances from the line.
+
+print(linear_regression.coef_)
+print(linear_regression.intercept_)
+# y =mx+b
+# So:
+# y = 0.03157x - 7.8929
+ 
+### TESTING THE MODEL
+predicted = linear_regression.predict(x_test)
+expected = y_test
+
+for p,e in zip(predicted[::5], expected[::5]):
+    print(f"predicted: {p:.2f}, expected: {e:.2f}")
+    ## seems not too far off
+
