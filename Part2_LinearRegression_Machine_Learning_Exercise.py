@@ -45,3 +45,12 @@ for p,e in zip(predicted[::5], expected[::5]):
     print(f"predicted: {p:.2f}, expected: {e:.2f}")
     ## seems not too far off
 
+### PREDICTING FUTURE TEMPERATURES AND ESTIMATING PAST TEMPERATURES
+predict = (lambda x: linear_regression.coef_ * x +
+linear_regression.intercept_)
+
+print(predict(2019)) # 55.85584
+
+print(predict(1890)) # 51.7827
+
+### VISUALIZING THE DATASET WITH THE REGRESSION LINE
