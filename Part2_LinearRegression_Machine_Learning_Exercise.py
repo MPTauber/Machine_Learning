@@ -54,3 +54,29 @@ print(predict(2019)) # 55.85584
 print(predict(1890)) # 51.7827
 
 ### VISUALIZING THE DATASET WITH THE REGRESSION LINE
+import seaborn as sns 
+
+axes = sns.scatterplot(data=nyc, x="Date", y="Temperature",
+hue = "Temperature", palette="winter", legend=False) # no legend for this graph
+
+axes.set_ylim(10,70)
+
+import numpy as np 
+# to display the regression line 
+
+# coordinates for regression lnie's start and end points:
+x = np.array([min(nyc.Date.values), max(nyc.Date.values)]) 
+y= predict(x) # passing the array x to the lambda from ealier
+
+import matplotlib.pyplot as plt 
+
+line = plt.plot(x,y)
+plt.show()
+
+
+### ANSWER TO QUESTION:
+print(np.average(nyc.Temperature.values)) # average is 53.8569
+
+# As graph and equation shows, temperature is trending upwards.
+print(predict(22000)) # For example, Model predicts that the temperature in 19,980 years is very hot........ 
+# But we will all be dead by then
