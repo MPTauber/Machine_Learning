@@ -66,7 +66,6 @@ print(x_test.shape)
 print(y_train.shape)
 print(y_test.shape)
 
-
 #### TRAINING THE MODEL
 
 from sklearn.linear_model import LinearRegression
@@ -93,6 +92,7 @@ df["Expected"] = pd.Series(expected)
 
 df["Predicted"] = pd.Series(predicted)
 
+
 # plot the data as a scatter plot with the expected (target)
 # prices along the x-axis and the predicted prices along the y-axis:
 
@@ -116,4 +116,5 @@ axes.set_ylim(start,end)
 # The letter k represents the color black, and the -- indicates that plot should draw a dashed line:
 
 line= plt2.plot([start,end],[start,end], "k--")
-plt2.show()
+#plt2.show()
+print(california.feature_names)
